@@ -13,6 +13,6 @@ jq -r '.[] | [.Key, .Value] | join(" ")' |
 while read line; do
     KEY=$(echo $line | awk '{print $1}' | sed "s/$FROM/$TO/")
     VAL=$(echo $line | awk '{print $2}' | base64 --decode)
-    curl -XPUT -d "$VAL" "http://rs2sp_pm.rs2.com:8500/v1/kv/$KEY"
+    curl -XPUT -d "$VAL" "http://consul.somewhere.com:8500/v1/kv/$KEY"
     echo
 done
